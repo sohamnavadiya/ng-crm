@@ -8,7 +8,9 @@ import { HttpHeaders, HttpClient} from '@angular/common/http';
 export class APIService {
 
   API_URL = 'http://localhost:8000';
-  REAPP_API_URL = 'https://XXX.XXXXX.XX';
+  REAPP_API_URL = 'https://dev.reapp.in';
+  REAPP_LOCAL_API_URL = 'http://localhost:8080';
+
 
   constructor(private httpClient: HttpClient) {}
 
@@ -38,9 +40,17 @@ export class APIService {
     const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer NxLo231tD7WQDo2DKk2zaExh0HF8YPJnE'
+        'Authorization': 'Bearer NxLotD7WQDo2DKk2zaExh0HF8YPJnE'
       }
     );
     return this.httpClient.post(`${this.REAPP_API_URL}/api/v1/voucher/list/`, {}, {headers: headers});
+  }
+  uploadImage(uploadData) {
+    const headers = new HttpHeaders(
+      {
+        'Authorization': 'Bearer pgo3mgqcq2mv18coasu2765qfsknyp'
+      }
+    );
+    return this.httpClient.post(`${this.REAPP_LOCAL_API_URL}/api/v1/upload_image/`, uploadData, {headers: headers});
   }
 }
