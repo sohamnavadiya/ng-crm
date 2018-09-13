@@ -37,39 +37,6 @@ export class VoucherListComponent implements OnInit {
       return Observable.throw(error);
     });
   }
-  onFileChanged(event) {
-    console.log(event);
-    this.selectedFile = event.target.files[0];
-    // console.log(event.target.files);
-    console.log(event.target);
-    console.log(event.target.files[0]);
-    console.log(event.target.files[0].name);
-  }
-
-  onUpload() {
-    // upload code goes here
-    const uploadData = new FormData();
-    uploadData.append('image', this.selectedFile, this.selectedFile.name);
-    this.apiService.uploadImage(uploadData).subscribe((data: object) => {
-      console.log(data);
-    }, error => {
-      console.error('Error uploading Image');
-    });
-  }
-
-  onSubmit() {
-    console.log('hit success');
-    const formData = new FormData();
-    formData.append('image',
-      this.selectedFile,
-      this.selectedFile.name);
-    const abc: object = {'image': this.selectedFile};
-    this.apiService.uploadImage(abc).subscribe((data: object) => {
-      console.log(data);
-    }, error => {
-      console.error('Error uploading Image');
-    });
-  }
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     console.log('file', this.filesToUpload);
